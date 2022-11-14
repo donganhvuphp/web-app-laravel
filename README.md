@@ -5,6 +5,8 @@ git clone https://github.com/donganhvuphp/web-app-laravel.git
 - git checkout develop
 - git pull origin develop
 - git checkout -b ten_nhanh develop
+# exam 
+- git checkout -b donganh/APP-2 develop
 
 # sau khi lam xong
 - git pull origin develop
