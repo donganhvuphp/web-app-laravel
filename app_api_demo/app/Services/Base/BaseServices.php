@@ -2,6 +2,8 @@
 
 namespace App\Services\Base;
 
+use Carbon\Carbon;
+
 /**
  * Class BaseServices.
  *
@@ -44,8 +46,7 @@ abstract class BaseServices
             [
                 'data'        => $data,
                 'message'     => $message,
-                'status_code' => $status,
-                'time' => $status,
+                'time' => Carbon::now(),
             ],
             $status
         );

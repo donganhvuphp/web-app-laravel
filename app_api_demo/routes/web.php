@@ -16,38 +16,6 @@ use Inertia\Inertia;
 |
 */
 
-Route::get(
-    '/',
-    function () {
-        return Inertia::render(
-            'Welcome',
-            [
-                'canLogin'       => Route::has('login'),
-                'canRegister'    => Route::has('register'),
-                'laravelVersion' => Application::VERSION,
-                'phpVersion'     => PHP_VERSION,
-            ]
-        );
-    }
-);
-
-Route::middleware(['auth', 'verified'])->prefix('/')->group(
-    function () {
-        Route::get(
-            '/dashboard',
-            function () {
-                return Inertia::render('Dashboard');
-            }
-        )->name('dashboard');
-
-        Route::prefix('admin')->group(
-            function () {
-                Route::get('/pro', function () {
-                    dd(1);
-                })->middleware('role:admin');
-            }
-        );
-    }
-);
-
-require __DIR__ . '/auth.php';
+Route::fallback( function () {
+    abort( 404 );
+} );
