@@ -6,11 +6,10 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens;
     use HasFactory;
     use Notifiable;
 
@@ -44,19 +43,37 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles()
-    {
-        return $this->hasMany(RoleUser::class, 'user_id', 'id');
+//    public function roles()
+//    {
+//        return $this->hasMany(RoleUser::class, 'user_id', 'id');
+//    }
+//
+//    public function hasRole($role)
+//    {
+//        foreach ($this->roles as $role_detail) {
+//            if ($role_detail->roleOfUser->name == $role) {
+//                return true;
+//            }
+//        }
+//
+//        return false;
+//    }
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier() {
+        return $this->getKey();
     }
 
-    public function hasRole($role)
-    {
-        foreach ($this->roles as $role_detail) {
-            if ($role_detail->roleOfUser->name == $role) {
-                return true;
-            }
-        }
-
-        return false;
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims() {
+        return [];
     }
 }
