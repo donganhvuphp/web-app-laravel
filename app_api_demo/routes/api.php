@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\v1\Admin\BrandController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Api\v1\Admin\CategoryController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +29,7 @@ Route::prefix('v1')->group(
         });
         Route::middleware('auth:api')->group(function() {
             Route::resource('brands', BrandController::class);
+            Route::resource('categories', CategoryController::class);
         });
     }
 );

@@ -17,7 +17,7 @@ class CreateCategoryProductTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('description');
-            $table->integer('parent_id')->nullable();
+            $table->integer('parent_id')->nullable()->unsigned();
             $table->tinyInteger('status')->default(ACTIVE);
             $table->timestamps();
         });
