@@ -45,7 +45,7 @@ class BrandService extends BaseServices
     public function createBrand($attributes): Response|Application|ResponseFactory
     {
         try {
-            $attributes['image'] = Storage::disk('dropbox')->put('brands', $attributes['image']);
+            $attributes['image'] = $this->handleUpload('brands', $attributes['image']);
             $newBrand = $this->brandRepository->store($attributes);
 
             return $this->responseJson($newBrand, HTTP_STATUS['SUCCESS']);
