@@ -32,6 +32,7 @@ Route::prefix('v1')->group(
         });
         Route::middleware('auth:api')->group(function () {
             Route::resource('brands', BrandController::class);
+            Route::post('brands/{id}', [BrandController::class, 'update']);
             Route::resource('categories', CategoryController::class);
         });
         Route::resource('products', ProductController::class);
