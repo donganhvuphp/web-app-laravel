@@ -112,9 +112,14 @@
       <path value="$PROJECT_DIR$/app_api_demo/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/app_api_demo/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/app_api_demo/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/app_api_demo/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/app_api_demo/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/app_api_demo/vendor/tymon/jwt-auth" />
+      <path value="$PROJECT_DIR$/app_api_demo/vendor/stella-maris/clock" />
+      <path value="$PROJECT_DIR$/app_api_demo/vendor/namshi/jose" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
   <component name="PhpUnit">
     <phpunit_settings>
       <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/app_api_demo/vendor/autoload.php" />
