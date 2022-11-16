@@ -8,8 +8,13 @@ git clone https://github.com/donganhvuphp/web-app-laravel.git
 # vi du 
 - git checkout -b donganh/APP-2 develop
 
-# sau khi lam xong
-- git pull origin develop
+# sau khi lam xong chưa commit 
+
+- git stash
+- git fetch origin develop
+- git rebase origin/develop
+- git stash pop
+
 # fix conflict nếu có 
 - git add ten_file
 - git commit -m"noi dung commit"
