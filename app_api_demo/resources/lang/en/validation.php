@@ -145,6 +145,14 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'image' => [
+            'image' => 'Hình ảnh không đúng địng dạng!'
+        ],
+        'name' => [
+            'unique' => 'Tên đã tồn tại!',
+            'required' => 'Tên không được để trống!',
+            'max' => 'Tên phải nhỏ hơn :max!'
+        ]
     ],
 
     /*

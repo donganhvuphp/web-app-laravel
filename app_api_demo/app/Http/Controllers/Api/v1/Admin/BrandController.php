@@ -3,89 +3,53 @@
 namespace App\Http\Controllers\Api\v1\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\Admin\BrandRequest;
 use App\Services\V1\BrandService;
-use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Http\Response;
 
 class BrandController extends Controller
 {
-    protected $brandService;
+    protected BrandService $brandService;
+
     public function __construct(BrandService $brandService)
     {
         $this->brandService = $brandService;
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index(): Response|Application|ResponseFactory
     {
         return $this->brandService->getAll();
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @throws Exception
      */
-    public function create()
-    {
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(BrandRequest $request): Response
     {
         return $this->brandService->createBrand($request->all());
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show($id): Response|Application|ResponseFactory
     {
-        //
+        return $this->brandService->getById($id);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @throws Exception
      */
-    public function edit($id)
+    public function update(BrandRequest $request, $id): Response|Application|ResponseFactory
     {
-        //
+        return $this->brandService->updateBrand($id, $request->all());
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @throws Exception
      */
-    public function update(Request $request, $id)
+    public function destroy($id): Response|Application|ResponseFactory
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return $this->brandService->deleteById($id);
     }
 }

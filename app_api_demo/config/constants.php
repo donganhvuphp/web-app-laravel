@@ -6,6 +6,7 @@ if (!defined('HTTP_STATUS')) {
         'BAD_REQUEST' => 400,
         'FORBIDDEN' => 403,
         'NOT_FOUND' => 404,
+        'NOT_ALLOWED' => 405,
         'PAGE_EXPIRED' => 419,
         'SERVER_ERROR' => 500,
         'SERVICE_UNAVAILABLE' => 503,

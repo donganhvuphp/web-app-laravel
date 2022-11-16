@@ -22,5 +22,8 @@ git clone https://github.com/donganhvuphp/web-app-laravel.git
 
 # sau khi push xong tạo merge request vào develop
 
+#setup JWT
+- php artisan jwt:secret
+
 
 
