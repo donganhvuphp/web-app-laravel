@@ -117,6 +117,11 @@
       <excludeFolder url="file://$MODULE_DIR$/app_api_demo/vendor/nunomaduro/collision" />
       <excludeFolder url="file://$MODULE_DIR$/app_api_demo/vendor/tijsverkoyen/css-to-inline-styles" />
       <excludeFolder url="file://$MODULE_DIR$/app_api_demo/vendor/dragonmantank/cron-expression" />
+      <excludeFolder url="file://$MODULE_DIR$/app_api_demo/vendor/lcobucci/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/app_api_demo/vendor/lcobucci/jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/app_api_demo/vendor/tymon/jwt-auth" />
+      <excludeFolder url="file://$MODULE_DIR$/app_api_demo/vendor/stella-maris/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/app_api_demo/vendor/namshi/jose" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
