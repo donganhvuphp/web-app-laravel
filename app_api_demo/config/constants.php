@@ -3,6 +3,7 @@
 if (!defined('HTTP_STATUS')) {
     define('HTTP_STATUS', [
         'SUCCESS' => 200,
+        'BAD_REQUEST' => 400,
         'FORBIDDEN' => 403,
         'NOT_FOUND' => 404,
         'PAGE_EXPIRED' => 419,

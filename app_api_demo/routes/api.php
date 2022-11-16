@@ -1,10 +1,13 @@
 <?php
 
-use App\Http\Controllers\Api\v1\Admin\BrandController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Api\v1\Admin\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\AuthController;
+
+use App\Http\Controllers\Api\v1\Admin\CategoryController;
+use App\Http\Controllers\Api\v1\Admin\ProductController;
+use App\Http\Controllers\Api\v1\Admin\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(
     function () {
-        Route::prefix('auth')->group(function() {
+        Route::prefix('auth')->group(function () {
             Route::post('/login', [AuthController::class, 'login']);
             Route::post('/register', [AuthController::class, 'register']);
             Route::post('/logout', [AuthController::class, 'logout']);
@@ -27,10 +30,11 @@ Route::prefix('v1')->group(
             Route::get('/user-profile', [AuthController::class, 'userProfile']);
             Route::post('/change-pass', [AuthController::class, 'changePassWord']);
         });
-        Route::middleware('auth:api')->group(function() {
+        Route::middleware('auth:api')->group(function () {
             Route::resource('brands', BrandController::class);
             Route::resource('categories', CategoryController::class);
         });
+        Route::resource('products', ProductController::class);
     }
 );
 

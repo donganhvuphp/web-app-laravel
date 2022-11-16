@@ -121,7 +121,6 @@ abstract class BaseRepository implements RepositoryInterface
 
     /**
      * Create a new model record in the database.
-     * f
      *
      * @param array $data Data
      *
