@@ -1,10 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\v1\Admin\AuthController;
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\AuthController;
-
 use App\Http\Controllers\Api\v1\Admin\CategoryController;
 use App\Http\Controllers\Api\v1\Admin\ProductController;
 use App\Http\Controllers\Api\v1\Admin\BrandController;
@@ -32,8 +29,14 @@ Route::prefix('v1')->group(
         });
         Route::middleware('auth:api')->group(function () {
             Route::resource('brands', BrandController::class);
-            Route::post('brands/create', [BrandController::class, 'store']);
-            Route::post('brands/update/{id}', [BrandController::class, 'update']);
+            Route::prefix('brands')->group(function () {
+                Route::get('/', [BrandController::class, 'index']);
+                Route::get('/{id}', [BrandController::class, 'show']);
+                Route::post('/create', [BrandController::class, 'store']);
+                Route::post('/update/{id}', [BrandController::class, 'update']);
+                Route::delete('/{id}', [BrandController::class, 'destroy']);
+            });
+
             Route::resource('categories', CategoryController::class);
         });
         Route::resource('products', ProductController::class);
