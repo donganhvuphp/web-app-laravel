@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Admin\BrandRequest;
+use App\Http\Requests\V1\Admin\BrandStoreRequest;
 use App\Services\V1\BrandService;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -27,7 +28,7 @@ class BrandController extends Controller
     /**
      * @throws Exception
      */
-    public function store(BrandRequest $request): Response
+    public function store(BrandStoreRequest $request): Response
     {
         return $this->brandService->createBrand($request->all());
     }
