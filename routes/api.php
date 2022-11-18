@@ -28,7 +28,6 @@ Route::prefix('v1')->group(
             Route::post('/change-pass', [AuthController::class, 'changePassWord']);
         });
         Route::middleware('auth:api')->group(function () {
-            Route::resource('brands', BrandController::class);
             Route::prefix('brands')->group(function () {
                 Route::get('/', [BrandController::class, 'index']);
                 Route::get('/{id}', [BrandController::class, 'show']);
