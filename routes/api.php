@@ -35,16 +35,16 @@ Route::prefix('v1')->group(
                 Route::post('/update/{id}', [BrandController::class, 'update']);
                 Route::delete('/{id}', [BrandController::class, 'destroy']);
             });
-
+            Route::prefix('products')->group(function () {
+                Route::get('/', [ProductController::class, 'index']);
+                Route::get('/{id}', [ProductController::class, 'show']);
+                Route::post('/create', [ProductController::class, 'store']);
+                Route::post('/update/{id}', [ProductController::class, 'update']);
+                Route::delete('/{id}', [ProductController::class, 'destroy']);
+            });
             Route::resource('categories', CategoryController::class);
         });
-        Route::prefix('products')->group(function () {
-            Route::get('/', [ProductController::class, 'index']);
-            Route::get('/{id}', [ProductController::class, 'show']);
-            Route::post('/create', [ProductController::class, 'store']);
-            Route::post('/update/{id}', [ProductController::class, 'update']);
-            Route::delete('/{id}', [ProductController::class, 'destroy']);
-        });
+
     }
 );
 

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Brand;
 use App\Models\CategoryProduct;
 use App\Models\Product;
 use Database\Factories\CategoryFactory;
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder
     {
        CategoryProduct::factory(5)->create();
        Product::factory(10)->create();
+       Brand::factory(10)->create();
 
         $this->call([
             UserSeeder::class,
