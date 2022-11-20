@@ -38,7 +38,13 @@ Route::prefix('v1')->group(
 
             Route::resource('categories', CategoryController::class);
         });
-        Route::resource('products', ProductController::class);
+        Route::prefix('products')->group(function () {
+            Route::get('/', [ProductController::class, 'index']);
+            Route::get('/{id}', [ProductController::class, 'show']);
+            Route::post('/create', [ProductController::class, 'store']);
+            Route::post('/update/{id}', [ProductController::class, 'update']);
+            Route::delete('/{id}', [ProductController::class, 'destroy']);
+        });
     }
 );
 

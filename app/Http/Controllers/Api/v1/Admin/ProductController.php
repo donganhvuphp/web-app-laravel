@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Admin\ProductRequest;
+use App\Http\Requests\V1\Admin\ProductStoreRequest;
 use App\Services\V1\ProductService;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,7 @@ class ProductController extends Controller
      * @param  \Http\Requests\V1\Admin\ProductRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(ProductStoreRequest $request)
     {
         return $this->productService->createProduct($request->all());
     }

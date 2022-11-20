@@ -24,7 +24,7 @@ class BrandRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'        => "bail|required|max:100|unique:brands,name," . request('id'),
+            'name'        => 'bail|required|max:100|unique:brands,name,' . request('id') ,
             'image'       => 'bail|nullable|image|mimes:jpeg,png,jpg,gif|max:1024',
             'description' => 'nullable|max:10000',
         ];

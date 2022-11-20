@@ -2,13 +2,11 @@
 
 namespace App\Http\Requests\V1\Admin;
 
-use App\Models\CategoryProduct;
 use App\Rules\CheckExistBrandRule;
 use App\Rules\CheckExistCategoryRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\DB;
 
-class ProductRequest extends FormRequest
+class ProductStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +26,7 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'bail|required|max:100|unique:products,name,' . request('id'),
+            'name' => 'bail|required|max:100|unique:products',
             'price' => 'bail|required',
             'image' => 'bail|nullable|image|mimes:jpeg,png,jpg,gif|max:1024',
             'description' => 'bail|nullable|max:10000',
@@ -42,8 +40,7 @@ class ProductRequest extends FormRequest
                             'id' => request('category_id'),
                             'name' => 'category_product'
                         ]
-                    )
-                )
+                    ))
             ],
             'brand_id' => [
                 'bail',
@@ -54,8 +51,7 @@ class ProductRequest extends FormRequest
                             'id' => request('brand_id'),
                             'name' => 'brands'
                         ]
-                    )
-                )
+                    ))
             ],
         ];
     }

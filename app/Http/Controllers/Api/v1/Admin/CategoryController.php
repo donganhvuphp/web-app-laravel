@@ -51,7 +51,8 @@ class CategoryController extends Controller
         return $this->sentSuccessfully(
             $categoryResource,
             message: __('message.create.success', ['name' => 'category']),
-            status: HTTP_STATUS['SUCCESS']);
+            status: HTTP_STATUS['SUCCESS']
+        );
     }
 
     /**

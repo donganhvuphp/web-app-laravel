@@ -12,7 +12,7 @@ trait HandleUploadFile {
         if(!empty($file_current)) {
             $this->deleteFile($file_current);
         }
-        return $this->upload($path, $file_new);
+        return !empty($file_new) ? $this->upload($path, $file_new) : null;
     }
 
     public function upload($path, $file) {
@@ -25,5 +25,4 @@ trait HandleUploadFile {
         }
         return false;
     }
-
 }
