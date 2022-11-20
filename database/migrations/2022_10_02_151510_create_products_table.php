@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('brand_id')->unsigned();
             $table->string('name')->unique();
             $table->double('price');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->tinyInteger('status')->default(ACTIVE);
             $table->timestamps();
             $table->index('id');

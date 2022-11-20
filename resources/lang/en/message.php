@@ -19,4 +19,6 @@ return [
         'failed' => 'Delete :name failed!',
         'success' => 'Delete :name success!'
     ]
+
+
 ];

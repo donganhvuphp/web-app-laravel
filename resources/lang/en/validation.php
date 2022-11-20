@@ -152,6 +152,12 @@ return [
             'unique' => 'Tên đã tồn tại!',
             'required' => 'Tên không được để trống!',
             'max' => 'Tên phải nhỏ hơn :max!'
+        ],
+        'price' => [
+            'required' => 'Tên không được để trống!',
+        ],
+        'foreignkey' => [
+            'exists' => 'Không tồn tại id = :id tại :name'
         ]
     ],
 

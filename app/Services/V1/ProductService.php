@@ -4,10 +4,13 @@ namespace App\Services\V1;
 
 use App\Repositories\V1\ProductRepository;
 use App\Services\Base\BaseServices;
+use App\Traits\HandleUploadFile;
 use Illuminate\Http\Response;
 
 class ProductService extends BaseServices
 {
+    use HandleUploadFile;
+
     protected $productRepository;
 
     public function __construct(ProductRepository $productRepository)
@@ -34,6 +37,7 @@ class ProductService extends BaseServices
     {
         try {
             $product = $this->productRepository->findOrFail($id);
+
             return $this->responseJson(
                 $product,
                 message: __('message.get.success', ['name' => 'product']),
@@ -44,24 +48,34 @@ class ProductService extends BaseServices
         }
     }
 
-    public function createProduct(array $data)
+    public function createProduct(array $attributes)
     {
+        $attributes['image'] = $this->handleUpload('products', $attributes['image'] ?? null);
         try {
-            $product = $this->productRepository->store($data);
+            $product = $this->productRepository->store($attributes);
+
             return $this->responseJson(
                 $product,
                 message: __('message.create.success', ['name' => 'product']),
                 status: HTTP_STATUS['SUCCESS']
             );
         } catch (\Throwable $e) {
+            $this->deleteFile($attributes['image']);
             throw new \Exception($e->getMessage());
         }
     }
 
-    public function updateProduct($id, array $data)
+    public function updateProduct($id, array $attributes)
     {
+
         try {
-            $product = $this->productRepository->update($id, $data);
+            if (!empty($attributes['image'])) {
+                $current = $this->productRepository->getById($id);
+                $attributes['image'] = $this->handleUpload('products', $attributes['image'], $current['image'] ?? null);
+            }
+
+            $product = $this->productRepository->update($id, $attributes);
+
             return $this->responseJson(
                 $product,
                 message: $product ? __('message.update.success', ['name' => 'product']) :
@@ -76,6 +90,10 @@ class ProductService extends BaseServices
     public function deleteProduct($id)
     {
         try {
+            $current = $this->productRepository->getById($id);
+            if (!empty($current['image'])) {
+                $this->deleteFile($current['image']);
+            }
             $this->productRepository->deleteById($id);
             return $this->responseJson(
                 message: __('message.delete.success', ['name' => 'product']),
