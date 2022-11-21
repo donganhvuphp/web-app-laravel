@@ -65,6 +65,7 @@
             "app/Helpers/helpers.php",
             "config/constants.php"
         ],
+        "platform-check": false,
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
