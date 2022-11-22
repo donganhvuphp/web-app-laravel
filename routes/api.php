@@ -44,6 +44,7 @@ Route::prefix('v1')->group(
                 Route::delete('/{id}', [ProductController::class, 'destroy']);
             });
             Route::prefix('shopping-cart')->group(function () {
+                Route::get('/', [ShoppingCartController::class, 'show']);
                 Route::post('/create', [ShoppingCartController::class, 'store']);
                 Route::delete('/{id}', [ShoppingCartController::class, 'destroy']);
                 Route::post('/update/{id}', [ShoppingCartController::class, 'update']);

@@ -20,6 +20,21 @@ class ShoppingCartService extends BaseServices
         $this->cartItemRepository = $cartItemRepository;
     }
 
+    public function showProductInCart()
+    {
+        try {
+            $cartItemByUserId = $this->cartItemRepository->where('session_id', shopping_session())->get();
+
+            return $this->responseJson(
+                $cartItemByUserId,
+                message: __('message.get.success', ['name' => 'cart_item']),
+                status: HTTP_STATUS['SUCCESS']
+            );
+        } catch (\Throwable $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+
     /**
      * Add product to cart => update total shopping_session table
      *
