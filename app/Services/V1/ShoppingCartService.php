@@ -87,11 +87,10 @@ class ShoppingCartService extends BaseServices
 
     public function updateProductInCart($productId, $act)
     {
-
         try {
             $cartItemBySessionId = $this->cartItemRepository->getCartItemByProductIdAndSessionId(shopping_session(), $productId);
-            logger('longan' . $cartItemBySessionId);
             $quantity = $cartItemBySessionId->first()->quantity;
+
             $product = $this->cartItemRepository->update($cartItemBySessionId->first()->id,
                 [
                     'quantity' => $act == 'sum' ? $quantity + 1 : ($quantity > 1 ? $quantity - 1 : 1)
