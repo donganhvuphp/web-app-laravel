@@ -17,6 +17,15 @@ class ShoppingCartController extends Controller
     }
 
     /**
+     * @return void
+     */
+    public function show()
+    {
+        return $this->shoppingCartService->showProductInCart();
+    }
+
+
+    /**
      * Add product to cart | user login
      *
      * @param CartItemStoreRequest $request
@@ -38,6 +47,12 @@ class ShoppingCartController extends Controller
         return $this->shoppingCartService->deleteProductInCart($id);
     }
 
+    /**
+     * Update quantity product in cart | user login
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function update($id, Request $request)
     {
         return $this->shoppingCartService->updateProductInCart($id, $request->act ?? 'sum');
