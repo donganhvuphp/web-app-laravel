@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\Admin\CategoryController;
 use App\Http\Controllers\Api\v1\Admin\ProductController;
 use App\Http\Controllers\Api\v1\Admin\BrandController;
+use App\Http\Controllers\Api\v1\Client\ShoppingCartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,11 @@ Route::prefix('v1')->group(
                 Route::post('/create', [ProductController::class, 'store']);
                 Route::post('/update/{id}', [ProductController::class, 'update']);
                 Route::delete('/{id}', [ProductController::class, 'destroy']);
+            });
+            Route::prefix('shopping-cart')->group(function () {
+                Route::post('/create', [ShoppingCartController::class, 'store']);
+                Route::delete('/{id}', [ShoppingCartController::class, 'destroy']);
+                Route::post('/update/{id}', [ShoppingCartController::class, 'update']);
             });
             Route::resource('categories', CategoryController::class);
         });

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\ChangePasswordRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Models\ShoppingSession;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -55,7 +56,7 @@ class AuthController extends Controller
                 'password' => bcrypt($request->password)
             ]
         );
-
+        ShoppingSession::create(['user_id' => $user->id]);
         return self::sentSuccessfully($user, "Đăng ký tài khoản thành công!", HTTP_STATUS['SUCCESS']);
     }
 

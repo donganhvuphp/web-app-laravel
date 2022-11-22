@@ -40,7 +40,8 @@ class ProductStoreRequest extends FormRequest
                             'id' => request('category_id'),
                             'name' => 'category_product'
                         ]
-                    ))
+                    )
+                )
             ],
             'brand_id' => [
                 'bail',
@@ -51,7 +52,8 @@ class ProductStoreRequest extends FormRequest
                             'id' => request('brand_id'),
                             'name' => 'brands'
                         ]
-                    ))
+                    )
+                )
             ],
         ];
     }
