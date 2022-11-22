@@ -15,7 +15,7 @@ class CustomColumnImageTableBrands extends Migration
     {
         if (Schema::hasTable('brands')) {
             Schema::table('brands', function (Blueprint $table) {
-                $table->string('image')->nullable();
+                $table->string('image')->nullable()->change();
                 $table->string('description')->nullable()->change();
             });
         }
